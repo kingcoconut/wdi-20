@@ -2,3 +2,6 @@
 <% @results.each do |person| %>
   <p><a href="/people/<%= person['id'] %>"><%= "#{person['id']}: #{person['first_name']} #{person['last_name']}" %></a></p>
 <% end %>
+<p>
+  <a href="/people/new"><button>Play God</button></a>
+</p>
