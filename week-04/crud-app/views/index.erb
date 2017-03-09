@@ -1,0 +1,4 @@
+<h1>List of our favourite fabulously famous people</h1>
+<% @results.each do |person| %>
+  <p><%= "#{person['first_name']} #{person['last_name']}" %></p>
+<% end %>
