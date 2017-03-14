@@ -1,0 +1,20 @@
+<% if @food_item.errors %>
+  <ul>
+    <% @food_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= form_for @food_item do |f|%>
+  <input type="hidden" name="food_item[food_category_id]" value="<%= @food_category_id %>" />
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :image_src %>
+    <%= f.text_field :image_src %>
+  </p>
+  <%= f.submit %>
+<%end%>
