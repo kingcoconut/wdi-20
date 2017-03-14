@@ -1,0 +1,9 @@
+<%= form_tag "/reverse", method: :post do %>
+  <input type="text" name="string" />
+  <input type="submit"/>
+<%end%>
+
+<% if @output_string %>
+  <h1>RESULT:</h1>
+  <h3><%= @output_string %></h3>
+<%end%>
