@@ -57,6 +57,11 @@ countries.each do |country|
     city[:landmarks].each do |landmark|
       Landmark.create(name: landmark, city_id: new_city.id)
     end
+
+    city[:activities].each do |activity_name|
+      activity = Activity.find_or_create_by(name: activity_name)
+      new_city.activities << activity
+    end
   end
 end
 
