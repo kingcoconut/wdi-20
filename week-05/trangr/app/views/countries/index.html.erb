@@ -1,0 +1,8 @@
+<%= form_tag "/countries", method: "get" do %>
+  <select name="country_id">
+    <% @countries.each do |c| %>
+      <option value="<%= c.id %>"><%= c.name %></option>
+    <%end%>
+  </select>
+  <%= submit_tag "Go" %>
+<%end%>
