@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315005035) do
+ActiveRecord::Schema.define(version: 20170315010016) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activities_cities", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "city_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "landmarks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
