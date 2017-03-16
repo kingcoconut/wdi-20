@@ -5,4 +5,11 @@ Rails.application.routes.draw do
 
   resources :cities, only: [:show]
   resources :activities, only: [:show]
+
+  get "signup", to: "users#new", as: "signup"
+  resources :users, only: [:create]
+
+  get "signin", to: "sessions#new", as: "signin"
+  post "signin", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 end
