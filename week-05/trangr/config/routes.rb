@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "countries#index"
   get "/countries", to: "countries#show"
 
+  resources :countries, only: [:edit, :update]
   resources :cities, only: [:show]
   resources :activities, only: [:show]
 
@@ -11,5 +12,5 @@ Rails.application.routes.draw do
 
   get "signin", to: "sessions#new", as: "signin"
   post "signin", to: "sessions#create"
-  delete "logout", to: "sessions#destroy"
+  delete "signout", to: "sessions#destroy", as: "signout"
 end

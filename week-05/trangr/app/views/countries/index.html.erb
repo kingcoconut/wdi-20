@@ -1,5 +1,5 @@
-<% if @user %>
-  <h4>Great to see you again <%= @user.email %>!</h4>
+<% if @current_user %>
+  <h4>Great to see you again <%= @current_user.email %>!</h4>
 <%end%>
 <h2>Where should we go?</h2>
 <%= form_tag "/countries", method: "get", class: "ui form" do %>
