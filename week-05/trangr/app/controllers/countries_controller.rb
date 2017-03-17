@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  before_action :authenticate_user, only: [:edit, :update]
+  before_action :authenticate_user, only: [:edit, :update, :destroy]
 
   def index
     @countries = Country.all
@@ -20,6 +20,17 @@ class CountriesController < ApplicationController
       redirect_to controller: "countries", action: "show", country_id: @country.id
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @current_user.admin
+      country = Country.find(params[:id]).destroy
+      flash[:success] = "You deleted #{country.name}. Great work...."
+      redirect_to root_path
+    else
+      flash[:error] = "Nice try, joker"
+      redirect_to root_path
     end
   end
 

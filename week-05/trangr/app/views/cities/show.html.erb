@@ -3,7 +3,12 @@
 <h3>Activities</h3>
 <ul>
   <% @city.activities.each do |activity| %>
-    <li><%= link_to activity.name, activity_path(activity.id) %></li>
+    <li>
+      <%= link_to activity.name, activity_path(activity.id) %>
+      <% if @current_user.admin %>
+        <%= link_to "Delete", delete_activity_path(city_id: @city.id, activity_id: activity.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%end%>
+    </li>
   <%end%>
 </ul>
 

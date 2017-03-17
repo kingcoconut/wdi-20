@@ -1,7 +1,10 @@
 <h1>Welcome to <%= @country.name %>!</h1>
-<%# if @current_user %>
-  <%= link_to "Edit", edit_country_path(@country.id) %>
-<%#end%>
+<% if @current_user %>
+  <%= link_to "Edit", edit_country_path(@country.id) %> |
+  <% if @current_user.admin %>
+    <%= link_to "Delete", country_path(@country.id), method: :delete, data: {confirm: "Hey there Donald. Are you sure you want to drop a nuke on #{@country.name}??"} %>
+  <% end %>
+<%end%>
 
 <ul>
   <% @country.cities.each do |city| %>

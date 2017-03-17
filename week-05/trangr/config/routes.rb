@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root "countries#index"
   get "/countries", to: "countries#show"
 
-  resources :countries, only: [:edit, :update]
+  resources :countries, only: [:edit, :update, :destroy]
   resources :cities, only: [:show]
   resources :activities, only: [:show]
+
+  delete "/cities/:city_id/activities/:activity_id", to: "activities#destroy", as: "delete_activity"
 
   get "signup", to: "users#new", as: "signup"
   resources :users, only: [:create]
