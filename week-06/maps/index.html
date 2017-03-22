@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: -33.8697753, lng: 151.2059688}
+        });
+
+        var beaches = [
+          ['Bondi Beach', -33.890542, 151.274856],
+          ['Coogee Beach', -33.923036, 151.259052],
+          ['Cronulla Beach', -34.028249, 151.157507],
+          ['Manly Beach', -33.80010128657071, 151.28747820854187],
+          ['Maroubra Beach', -33.950198, 151.259302]
+        ];
+
+        beaches.forEach(function(location){
+          new google.maps.Marker({
+            map: map,
+            position: {lat: location[1], lng: location[2]},
+            title: location[0]
+          });
+        })
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBahQq73N7pNXHOwfeerwxiaGGnJTFbf3Q&callback=initMap">
+    </script>
+  </body>
+</html>

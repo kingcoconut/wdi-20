@@ -1,0 +1,28 @@
+<h3>My Google Maps Demo <%= "Hello" %></h3>
+<div id="map"></div>
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat: -33.8697753, lng: 151.2059688}
+    });
+
+    var beaches = [
+      <%@locations.each do |location|%>
+        ['<%= location.name %>', <%= location.lat%>, <%= location.lng %>],
+      <%end%>
+    ];
+
+    beaches.forEach(function(location){
+      new google.maps.Marker({
+        map: map,
+        position: {lat: location[1], lng: location[2]},
+        title: location[0]
+      });
+    })
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBahQq73N7pNXHOwfeerwxiaGGnJTFbf3Q&callback=initMap">
+</script>
