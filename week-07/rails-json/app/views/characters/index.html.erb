@@ -1,0 +1,17 @@
+<button id="generate">Get Character</button>
+<h2></h2>
+
+<script>
+  $(document).ready(function(){
+    $("#generate").on("click", function(){
+      $.ajax({
+        url: "/generator",
+        method: "GET",
+        dataType: "JSON",
+        success: function(data){
+          $("h2").html(data.title + data.name + data.surname);
+        }
+      })
+    })
+  })
+</script>
