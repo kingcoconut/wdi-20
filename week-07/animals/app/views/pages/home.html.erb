@@ -1,0 +1,31 @@
+<h1>Home</h1>
+
+<input type="text" />
+<button>Find</button>
+
+<div id="animal">
+
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("button").on("click", function(){
+      var id = $("input").val();
+      $.ajax({
+        url: "animals/" + id,
+        method: "GET",
+        dataType: "JSON",
+        success: function(data){
+          var $name = $("<h2>").html(data.name);
+          var $species = $("<p>").html("SPECIES: " + data.species.name);
+          var $climate = $("<p>").html("CLIMATE: " + data.climate);
+
+          $("#animal").html("").append($name).append($species).append($climate);
+        },
+        error: function(){
+          alert("Whoops, you screwed it up");
+        }
+      })
+    })
+  })
+</script>
