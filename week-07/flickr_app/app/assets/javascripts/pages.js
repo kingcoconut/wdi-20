@@ -17,6 +17,7 @@ var parseFlickrResults = function(data){
 }
 
 var searchFlickr = function(searchTerm){
+  saveTermInHistory(searchTerm)
   ajaxRequestInProgress = true;
   $.ajax({
     url: flickrAPIURL,
@@ -33,6 +34,17 @@ var searchFlickr = function(searchTerm){
   });
 }
 
+var saveTermInHistory = function(term){
+  $.ajax({
+    url: "/histories",
+    method: "POST",
+    dataType: "JSON",
+    data: {
+      term: term
+    }
+  });
+}
+
 var page = 1;
 var ajaxRequestInProgress = 0;
 
@@ -43,4 +55,16 @@ $(document).ready(function(){
       searchFlickr(term);
     }
   });
+})
+
+$(document).on("click", "img", function(){
+  var img_src = $(this).attr("src");
+  $.ajax({
+    url: "/favourites",
+    method: "POST",
+    dataType: "JSON",
+    data: {
+      image_src: img_src
+    }
+  })
 })
