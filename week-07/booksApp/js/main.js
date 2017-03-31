@@ -19,9 +19,19 @@ var BookIndexPage = Backbone.View.extend({
 
 var BookView = Backbone.View.extend({
   tagName: "div",
+  events: {
+    "click .author": "authorAlert",
+    "click .red": "makeRed"
+  },
   render: function(){
     var bookTemplate = _.template($("#bookTemplate").html());
     this.$el.html(bookTemplate(this.model.attributes));
+  },
+  authorAlert: function(){
+    alert("Can you read, the authr's name is: " + this.model.get("author"));
+  },
+  makeRed: function(){
+    this.$el.css({color:"red"});
   }
 });
 
