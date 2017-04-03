@@ -1,4 +1,7 @@
-_.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
+_.templateSettings = {
+    interpolate : /\{\{=(.+?)\}\}/g,
+    evaluate : /\{\{(.+?)\}\}/g
+  };
 
 App.blogPosts = new App.Posts();
 

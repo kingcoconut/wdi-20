@@ -2,6 +2,21 @@
 <div id="main"></div>
 
  <script id="postTemplate" type="text/template">
-   <h3><a href="#/posts/{{ id }}">{{ title }}</a></h3>
-   <p>{{ content }}</p>
+   <h3><a href="#/posts/{{= id }}">{{= title }}</a></h3>
+   <p>{{= content }}</p>
+ </script>
+
+ <script id="postListTemplate" type="text/template">
+   <h1>Welcome to my blog</h1>
+   {{ _.each(models, function(post){ }}
+     <h3><a href="#/posts/{{= post.get("id") }}">{{= post.get("title") }}</a></h3>
+   {{ }); }}
+   <p>
+     <label>Title:</label>
+     <input type="text"/>
+  </p>
+  <p>
+    <textarea></textarea>
+  </p>
+  <button id="new_post">Save</button>
  </script>

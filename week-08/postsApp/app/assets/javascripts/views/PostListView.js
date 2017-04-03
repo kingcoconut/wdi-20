@@ -1,15 +1,25 @@
 var App = App || {}
 
 App.PostListView = Backbone.View.extend({
+  initialize: function(options){
+    this.listenTo(options.collection, "change", this.render);
+  },
   el: "#main",
+  events: {
+    "click #new_post": "savePost"
+  },
   render: function(){
-    var $header = $("<h1>").text("WELCOME")
-    this.$el.html($header)
-    var mainElement = this.$el;
-    this.collection.each(function(post){
-      var postView = new App.PostView({model: post});
-      postView.render();
-      mainElement.append(postView.el);
-    })
+    debugger
+    var template = _.template($("#postListTemplate").html());
+    this.$el.html(template(this.collection));
+  },
+  savePost: function(){
+    var title = this.$el.find("input").val();
+    var content = this.$el.find("textarea").val();
+
+    this.collection.create({title: title, content: content});
+
+    this.$el.find("input").val("");
+    this.$el.find("textarea").val("");
   }
 });
