@@ -9,7 +9,6 @@ App.PostListView = Backbone.View.extend({
     "click #new_post": "savePost"
   },
   render: function(){
-    debugger
     var template = _.template($("#postListTemplate").html());
     this.$el.html(template(this.collection));
   },

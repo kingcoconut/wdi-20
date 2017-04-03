@@ -7,4 +7,9 @@ class PostsController < ApplicationController
     post = Post.create(title: params[:title], content: params[:content])
     render json: post
   end
+
+  def destroy
+    Post.find(params[:id]).delete
+    render json: {message: "Records deleted"}
+  end
 end
