@@ -17,4 +17,20 @@ RSpec.describe User, type: :model do
       expect(user.full_name).to eq "Foo Bar"
     end
   end
+
+  describe "#current_position" do
+    context "when a user has experiences" do
+      it "should return the title from the users most recent experience" do
+        user = FactoryGirl.create(:user, :with_experiences)
+        current_experience = FactoryGirl.create(:experience, user: user, start_date: Time.now)
+        expect(user.current_position).to eq "#{current_experience.title}, #{current_experience.company}"
+      end
+    end
+    context "when a user has no experiences" do
+      it "should return empty string" do
+        user = User.create(email: "foo@goo.com", first_name: "Foo", last_name: "Bar")
+        expect(user.current_position).to eq "Unemployed"
+      end
+    end
+  end
 end

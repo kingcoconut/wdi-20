@@ -5,4 +5,13 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def current_position
+    experience = experiences.order(start_date: :desc).first
+    if experience.nil?
+      "Unemployed"
+    else
+      "#{experience.title}, #{experience.company}"
+    end
+  end
 end
