@@ -1,0 +1,4 @@
+<h1>LinkedIn Users</h1>
+<% @users.each do |u| %>
+  <h3><%= u.full_name%>: <%= u.current_position %></h3>
+<%end%>
