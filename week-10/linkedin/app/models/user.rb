@@ -15,4 +15,8 @@ class User < ApplicationRecord
       "#{experience.title}, #{experience.company}"
     end
   end
+
+  def send_welcome_email
+    # SendGrid.send_email("welcome-email", email, "no-reply@foo.com")
+  end
 end

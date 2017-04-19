@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  def create
+    @user = User.new(clean_params)    
+    if @user.save
+      @user.send_welcome_email
+      render "show"
+    else
+      render "new"
+    end
+  end
+
   def index
     @users = User.all
   end
@@ -10,6 +20,11 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private
