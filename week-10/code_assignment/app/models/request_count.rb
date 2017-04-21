@@ -1,0 +1,2 @@
+class RequestCount < ApplicationRecord
+end
