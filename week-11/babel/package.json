@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "babel": "babel --presets es2015 main.js -o main.bundle.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
