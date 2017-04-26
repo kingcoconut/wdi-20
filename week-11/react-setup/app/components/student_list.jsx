@@ -1,22 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class StudentsContainer extends React.Component {
-  render(){
-    let students = [
-      "Peach", "Jin", "Jared", "Hen", "Kevin", "Diego", "Petr"
-    ]
-
-    return(
-      <div>
-        <h1>Student List</h1>
-        <StudentList students={students}/>
-      </div>
-    );
-  }
-}
-
-class StudentList extends React.Component{
+export default class StudentList extends React.Component{
   constructor(){
     super();
     this.state = {
@@ -48,8 +32,3 @@ class StudentList extends React.Component{
     }
   }
 }
-
-ReactDOM.render(
-  <StudentsContainer id={"Foobar"}/>,
-  document.getElementById('app')
-);

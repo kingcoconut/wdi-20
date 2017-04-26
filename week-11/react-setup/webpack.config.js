@@ -7,7 +7,7 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 
 module.exports = {
   entry: [
-    __dirname + "/app/index.js"
+    __dirname + "/app/index.jsx"
   ],
   output: {
     path: __dirname + "/dist",
@@ -17,7 +17,7 @@ module.exports = {
     loaders: [
       {
         loader: 'babel-loader',
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/
       }
     ]
