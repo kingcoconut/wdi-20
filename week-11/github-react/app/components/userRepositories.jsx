@@ -8,7 +8,7 @@ export default class UserRepositories extends React.Component{
       const repos = this.props.repos.map((repo) => {
         return(
           <li>
-            { repo.name }
+            <a href={repo.html_url} target="_blank">{ repo.name }</a>
           </li>
         );
       });
