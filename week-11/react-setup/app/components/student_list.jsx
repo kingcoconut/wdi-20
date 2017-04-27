@@ -3,9 +3,6 @@ import React from 'react';
 export default class StudentList extends React.Component{
   constructor(){
     super();
-    this.state = {
-      loading: true
-    }
   }
 
   componentDidMount(){
@@ -17,18 +14,15 @@ export default class StudentList extends React.Component{
   render(){
     let studentList = this.props.students.map((el) => {
       return(
-        <li>{el}</li>
+        <p>
+          <li>{el}</li>
+          <button onClick={this.props.deleteStudent.bind(this, el)}>Delete</button>
+        </p>
       )
     });
 
-    if(this.state.loading){
-      return(
-        <div>Loading....</div>
-      )
-    }else{
-      return(
-        <ul>{ studentList }</ul>
-      )
-    }
+    return(
+      <ul>{ studentList }</ul>
+    )
   }
 }
