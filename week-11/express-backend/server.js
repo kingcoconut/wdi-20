@@ -28,7 +28,7 @@ app.get("/students", (req, res, next) => {
   }
 });
 
-let server = app.listen(8081, () => {
+let server = app.listen(process.env.PORT || 8081, () => {
   let host = server.address().address;
   let port = server.address().port;
   console.log(`Application listening at http://${host}:${port}`);
