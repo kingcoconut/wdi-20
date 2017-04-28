@@ -5,7 +5,7 @@ export default class Students extends React.Component{
     if(this.props.cohort.length === 0){
       return( <div>Loading...</div> );
     }else{
-      const students = this.props.cohort.map((student) => {
+      const students = this.props.cohort.students.map((student) => {
         return(
           <li>{ student }</li>
         );

@@ -12,7 +12,7 @@ export default class Details extends Component {
   componentWillMount(){
     const cohort = this.props.routeParams.cohort;
 
-    let url = `https://localhost:8081/students?cohort=${cohort}`
+    let url = `http://localhost:8081/students?cohort=${cohort}`
     Axios.get(url).then((response) => {
       this.setState({cohort: response.data});
     })
